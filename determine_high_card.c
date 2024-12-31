@@ -102,9 +102,9 @@ void populate_hand(uint8_t *hand, char *input) {
 
         c = input[(2 * i) + 1];
 
-        if (c == 'C') {
+        if (c == 'D') {
             hand[i] += 3;
-        } else if (c == 'D') {
+        } else if (c == 'C') {
             hand[i] += 2;
         } else if (c == 'H') {
             hand[i]++;
