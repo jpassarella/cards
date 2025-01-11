@@ -10,12 +10,15 @@ def home():
 
 @app.route("/execute/", methods = ["POST"])
 def execute():
-    card_rank_values = [request.form[f'rank_{i}'] for i in range(1, 6)]
-    card_suit_values = [request.form[f'suit_{i}'] for i in range(1, 6)]
+    card_rank_values = [request.form[f"rank_{i}"] for i in range(1, 6)]
+    card_suit_values = [request.form[f"suit_{i}"] for i in range(1, 6)]
     
     card_value_string = ""
     for i in range(5):
-        card_value_string = card_value_string.join(card_rank_values[i]).join(card_suit_values[i])
+        card_value_string += card_rank_values[i] + card_suit_values[i]
+        
+    # delete later, line of code below just used for error checking
+    # return f"card_value_string = {card_value_string}"
     
     try:
         result = subprocess.run(['./determine_high_card.exe', card_value_string], capture_output = True, text = True)
